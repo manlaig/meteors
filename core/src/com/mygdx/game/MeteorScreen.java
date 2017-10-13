@@ -38,7 +38,8 @@ public class MeteorScreen implements Screen
     public void render(float delta) {
         viewport.apply();
 
-        Gdx.gl.glClearColor(1,1,1,1);
+        //Gdx.gl.glClearColor(203, 141, 9, 1);
+        Gdx.gl.glClearColor(209/255.0F, 141/255.0F, 9/255.0F, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         renderer.setProjectionMatrix(viewport.getCamera().combined);
@@ -46,7 +47,7 @@ public class MeteorScreen implements Screen
         player.update(delta);
         renderer.begin(ShapeRenderer.ShapeType.Filled);
 
-        //meteor.render(renderer, viewport);
+        meteor.render(renderer);
         player.render(renderer);
         renderer.end();
     }

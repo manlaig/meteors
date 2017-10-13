@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -10,17 +11,12 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
  * Created by manlai on 10/12/2017.
  */
 
-public class Player extends InputAdapter
+public class Player
 {
 
     Vector2 position;
     Vector2 velocity;
     ExtendViewport viewport;
-
-    @Override
-    public boolean keyDown(int keycode) {
-        return true;
-    }
 
     public Player(ExtendViewport viewport)
     {
@@ -50,6 +46,31 @@ public class Player extends InputAdapter
 
     public void update(float delta)
     {
+        if(Gdx.input.isKeyPressed(Input.Keys.LEFT))
+        {
+            position.x -= delta * Constants.PLAYER_VELOCITY;
+        }
+
+        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT))
+        {
+            position.x += delta * Constants.PLAYER_VELOCITY;
+        }
+
+        inBounds(viewport);
+    }
+
+    public void inBounds(ExtendViewport viewport)
+    {
+
+        if(position.x - 0.5F < 0)
+        {
+            position.x = 0.5F;
+        }
+
+        if(position.x + 0.5F > viewport.getWorldWidth())
+        {
+            position.x = viewport.getWorldWidth() - 0.5F;
+        }
 
     }
 }

@@ -15,8 +15,6 @@ public class Meteor
     Vector2 velocity;
     ExtendViewport viewport;
 
-    float baseRadius;
-    float radiusMultiplier;
 
     public Meteor(ExtendViewport viewport)
     {
@@ -33,15 +31,13 @@ public class Meteor
     {
         position = new Vector2(viewport.getWorldWidth() / 2, viewport.getWorldHeight() / 2);
         velocity = new Vector2();
-        baseRadius = Constants.RADIUS_FACTOR * Math.min(viewport.getWorldWidth(), viewport.getWorldHeight());
-        radiusMultiplier = 1;
     }
 
-    protected void render(ShapeRenderer renderer, ExtendViewport viewport)
+    protected void render(ShapeRenderer renderer)
     {
         renderer.set(ShapeRenderer.ShapeType.Filled);
-        renderer.setColor(Color.BLACK);
-        renderer.rect(Constants.WORLD_SIZE, Constants.WORLD_SIZE, viewport.getWorldWidth(), viewport.getWorldHeight());
+        renderer.setColor(Color.RED);
+        renderer.circle(position.x, position.y, 0.2F);
     }
 
 }

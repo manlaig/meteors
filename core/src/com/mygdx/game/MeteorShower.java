@@ -16,11 +16,13 @@ public class MeteorShower {
     ExtendViewport viewport;
     int score = 0;
     int topScore = 0;
+    float difficulty;
 
-    public MeteorShower(ExtendViewport viewport)
+    public MeteorShower(ExtendViewport viewport, float difficulty)
     {
         meteors = new Array<Meteor>();
         this.viewport = viewport;
+        this.difficulty = difficulty;
     }
 
     public void render(ShapeRenderer renderer)
@@ -35,7 +37,7 @@ public class MeteorShower {
     {
         Random random = new Random();
 
-        if(random.nextFloat() < delta * 5)      //  THIS NUMBER 20 REPRESENTS THE DIFFICULTY
+        if(random.nextFloat() < delta * difficulty)
         {
             meteors.add(new Meteor(this.viewport));
         }

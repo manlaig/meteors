@@ -7,6 +7,6 @@ public class MyGdxGame extends Game
 {
     @Override
     public void create() {
-        setScreen(new MeteorScreen());
+        setScreen(new SetDiffcultyScreen(this));
     }
 }

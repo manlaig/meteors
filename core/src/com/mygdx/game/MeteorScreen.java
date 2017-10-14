@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -15,7 +16,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
  */
 
 
-public class MeteorScreen implements Screen
+public class MeteorScreen extends InputAdapter implements Screen
 {
 
     ExtendViewport viewport;
@@ -25,6 +26,14 @@ public class MeteorScreen implements Screen
     Player player;
     SpriteBatch batch;
     BitmapFont font;
+    MyGdxGame game;
+
+    float difficulty;
+
+    public MeteorScreen(MyGdxGame game, float difficulty){
+        this.game = game;
+        this.difficulty = difficulty;
+    }
 
     @Override
     public void hide() {
@@ -88,11 +97,12 @@ public class MeteorScreen implements Screen
     public void show() {
         renderer = new ShapeRenderer();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
-        meteorShower = new MeteorShower(viewport);
+        meteorShower = new MeteorShower(viewport, difficulty);
         player = new Player(viewport);
         batch = new SpriteBatch();
         font = new BitmapFont();
         hudViewport = new ScreenViewport();
+        Gdx.input.setInputProcessor(this);
 
         font.getData().setScale(1);
         font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
@@ -104,4 +114,11 @@ public class MeteorScreen implements Screen
         batch.dispose();
         font.dispose();
     }
+
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        game.setScreen(new SetDiffcultyScreen(game));
+        return true;
+    }
+
 }

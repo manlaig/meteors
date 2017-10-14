@@ -7,13 +7,15 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import java.util.Random;
 
 /**
- * Created by manla on 10/14/2017.
+ * Created by manlai on 10/14/2017.
  */
 
 public class MeteorShower {
 
     Array<Meteor> meteors;
     ExtendViewport viewport;
+    int score = 0;
+    int topScore = 0;
 
     public MeteorShower(ExtendViewport viewport)
     {
@@ -33,7 +35,7 @@ public class MeteorShower {
     {
         Random random = new Random();
 
-        if(random.nextFloat() < delta * 20)      //  THIS NUMBER 20 REPRESENTS THE DIFFICULTY
+        if(random.nextFloat() < delta * 5)      //  THIS NUMBER 20 REPRESENTS THE DIFFICULTY
         {
             meteors.add(new Meteor(this.viewport));
         }
@@ -46,6 +48,9 @@ public class MeteorShower {
             if(meteor.isBelowScreen())
             {
                 meteors.removeIndex(i);
+                score++;
+                if(score >= topScore)
+                    topScore = score;
             }
         }
 
@@ -53,7 +58,23 @@ public class MeteorShower {
 
     public void reset()
     {
-        meteors.removeAll(meteors, true);
+        for(int i = 0; i < meteors.size; i++)
+        {
+            meteors.removeRange(0, meteors.size - 1);
+        }
     }
 
+}
+
+class Runner extends Thread
+{
+    @Override
+    public void run() {
+        try {
+            Thread.sleep(300);
+        } catch(InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

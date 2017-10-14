@@ -17,6 +17,7 @@ public class Player
     Vector2 position;
     Vector2 velocity;
     ExtendViewport viewport;
+    int deaths = 0;
 
     public Player(ExtendViewport viewport)
     {
@@ -65,10 +66,12 @@ public class Player
 
         for(Meteor meteor : meteorShower.meteors)
         {
-            if(meteor.position.y - Constants.METEOR_RADIUS == this.position.y + 0.5f &&
+            if(meteor.position.y + Constants.METEOR_RADIUS <= this.position.y + 0.5f &&
                     (meteor.position.x >= this.position.x - 0.5f && meteor.position.x <= this.position.x + 0.5f))
             {
                 isHit = true;
+                deaths++;
+                meteorShower.score = 0;
             }
         }
         return isHit;

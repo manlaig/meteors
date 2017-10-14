@@ -8,7 +8,7 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import static com.badlogic.gdx.math.MathUtils.random;
 
 /**
- * Created by manla on 10/12/2017.
+ * Created by manlai on 10/12/2017.
  */
 
 public class Meteor

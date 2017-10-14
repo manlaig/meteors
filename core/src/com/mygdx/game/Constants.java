@@ -1,7 +1,7 @@
 package com.mygdx.game;
 
 /**
- * Created by manla on 10/12/2017.
+ * Created by manlai on 10/12/2017.
  */
 
 public class Constants

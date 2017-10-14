@@ -59,6 +59,21 @@ public class Player
         inBounds(viewport);
     }
 
+    public boolean hitByMeteor(MeteorShower meteorShower)
+    {
+        boolean isHit = false;
+
+        for(Meteor meteor : meteorShower.meteors)
+        {
+            if(meteor.position.y - Constants.METEOR_RADIUS == this.position.y + 0.5f &&
+                    (meteor.position.x >= this.position.x - 0.5f && meteor.position.x <= this.position.x + 0.5f))
+            {
+                isHit = true;
+            }
+        }
+        return isHit;
+    }
+
     public void inBounds(ExtendViewport viewport)
     {
 

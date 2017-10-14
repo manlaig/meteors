@@ -16,7 +16,7 @@ public class MeteorScreen implements Screen
 
     ExtendViewport viewport;
     ShapeRenderer renderer;
-    Meteor meteor;
+    MeteorShower meteorShower;
     Player player;
 
     @Override
@@ -39,31 +39,38 @@ public class MeteorScreen implements Screen
         viewport.apply();
 
         //Gdx.gl.glClearColor(203, 141, 9, 1);
-        Gdx.gl.glClearColor(209/255.0F, 141/255.0F, 9/255.0F, 1);
+        Gdx.gl.glClearColor(203/255.0F, 141/255.0F, 9/255.0F, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         renderer.setProjectionMatrix(viewport.getCamera().combined);
-        meteor.update(delta);
+        meteorShower.update(delta);
         player.update(delta);
         renderer.begin(ShapeRenderer.ShapeType.Filled);
 
-        meteor.render(renderer);
+        if(player.hitByMeteor(meteorShower))
+        {
+            meteorShower.reset();
+        }
+
+        meteorShower.render(renderer);
         player.render(renderer);
         renderer.end();
+
+
     }
 
     @Override
     public void resize(int width, int height) {
         viewport.update(width, height, true);
         player.init();
-        meteor.init();
+        //meteor.init();
     }
 
     @Override
     public void show() {
         renderer = new ShapeRenderer();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
-        meteor = new Meteor(viewport);
+        meteorShower = new MeteorShower(viewport);
         player = new Player(viewport);
     }
 

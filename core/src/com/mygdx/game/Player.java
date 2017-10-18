@@ -11,6 +11,8 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
  * Created by manlai on 10/12/2017.
  */
 
+//TODO: Allow the player to move using their accelerometer
+
 public class Player
 {
 

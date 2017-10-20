@@ -6,7 +6,8 @@ import com.badlogic.gdx.Game;
 public class MyGdxGame extends Game
 {
     @Override
-    public void create() {
+    public void create()
+    {
         setScreen(new SetDiffcultyScreen(this));
     }
 }

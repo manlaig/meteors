@@ -17,7 +17,6 @@ public class Constants
     public static final float DIFFUCULTY_MEDIUM = 10.0f;
     public static final float DIFFICULTY_HARD = 20.0f;
 
-    public static final float RADIUS_CIRCLE_DIFFICULTY = 80.0f;
     public static final float DIFFICULTY_WORLD_SIZE = 580.0f;
     public static final float DIFFICULTY_BUBBLE_RADIUS = DIFFICULTY_WORLD_SIZE / 9;
 

@@ -11,7 +11,7 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
  * Created by manlai on 10/12/2017.
  */
 
-//TODO: Allow the player to move using their accelerometer
+//TODO: Allow Android players to move using their accelerometer
 
 public class Player
 {
@@ -37,9 +37,11 @@ public class Player
     {
         renderer.setColor(Color.BLACK);
         renderer.set(ShapeRenderer.ShapeType.Filled);
+
         renderer.circle(this.position.x, this.position.y, 0.5F, 20);
         Vector2 torsoTop = new Vector2(this.position.x, this.position.y - 0.5F);
         Vector2 torsoBottom = new Vector2(torsoTop.x, torsoTop.y - 1.0F);
+
         renderer.rectLine(torsoTop, torsoBottom, 0.1F);
         renderer.rectLine(torsoTop.x, torsoTop.y, torsoTop.x + 0.5F, torsoTop.y - 0.5F, 0.1F);
         renderer.rectLine(torsoTop.x, torsoTop.y, torsoTop.x - 0.5F, torsoTop.y - 0.5F, 0.1F);
@@ -50,14 +52,12 @@ public class Player
     public void update(float delta)
     {
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT))
-        {
             position.x -= delta * Constants.PLAYER_VELOCITY;
-        }
+
 
         if(Gdx.input.isKeyPressed(Input.Keys.RIGHT))
-        {
             position.x += delta * Constants.PLAYER_VELOCITY;
-        }
+
 
         inBounds(viewport);
     }
@@ -81,16 +81,12 @@ public class Player
 
     public void inBounds(ExtendViewport viewport)
     {
-
         if(position.x - 0.5F < 0)
-        {
             position.x = 0.5F;
-        }
+
 
         if(position.x + 0.5F > viewport.getWorldWidth())
-        {
             position.x = viewport.getWorldWidth() - 0.5F;
-        }
 
     }
 }

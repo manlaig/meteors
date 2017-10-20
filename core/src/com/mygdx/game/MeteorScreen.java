@@ -27,74 +27,80 @@ public class MeteorScreen extends InputAdapter implements Screen
     SpriteBatch batch;
     BitmapFont font;
     MyGdxGame game;
-
     float difficulty;
 
-    public MeteorScreen(MyGdxGame game, float difficulty){
+    public MeteorScreen(MyGdxGame game, float difficulty)
+    {
         this.game = game;
         this.difficulty = difficulty;
     }
 
     @Override
-    public void hide() {
+    public void hide()
+    {
         renderer.dispose();
         batch.dispose();
         font.dispose();
     }
 
     @Override
-    public void pause() {
+    public void pause()
+    {
 
     }
 
     @Override
-    public void resume() {
+    public void resume()
+    {
 
     }
 
     @Override
-    public void render(float delta) {
+    public void render(float delta)
+    {
         viewport.apply();
 
-        //Gdx.gl.glClearColor(203, 141, 9, 1);
         Gdx.gl.glClearColor(203/255.0F, 141/255.0F, 9/255.0F, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         renderer.setProjectionMatrix(viewport.getCamera().combined);
+
         meteorShower.update(delta);
         player.update(delta);
         renderer.begin(ShapeRenderer.ShapeType.Filled);
 
-        if(player.hitByMeteor(meteorShower))
-        {
-            meteorShower.reset();
-        }
+        if(player.hitByMeteor(meteorShower))           //each time rendering the screen,
+            meteorShower.reset();                      //we check whether the player is hit by a meteor
+
 
         meteorShower.render(renderer);
         player.render(renderer);
+
         renderer.end();
 
         hudViewport.apply();
 
         batch.begin();
         batch.setProjectionMatrix(hudViewport.getCamera().combined);
+
         font.draw(batch, "Score: " + meteorShower.score, hudViewport.getWorldWidth() - 100, hudViewport.getWorldHeight() - 20);
         font.draw(batch, "Top Score: " + meteorShower.topScore, hudViewport.getWorldWidth() - 100, hudViewport.getWorldHeight() - 40);
         font.draw(batch, "Deaths: " + player.deaths, 20, hudViewport.getWorldHeight() - 20);
-        batch.end();
 
+        batch.end();
     }
 
     @Override
-    public void resize(int width, int height) {
+    public void resize(int width, int height)
+    {
         viewport.update(width, height, true);
         hudViewport.update(width, height, true);
         player.init();
-        //meteor.init();
     }
 
     @Override
-    public void show() {
+    public void show()
+    {
         renderer = new ShapeRenderer();
         viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
         meteorShower = new MeteorShower(viewport, difficulty);
@@ -109,14 +115,16 @@ public class MeteorScreen extends InputAdapter implements Screen
     }
 
     @Override
-    public void dispose() {
+    public void dispose()
+    {
         renderer.dispose();
         batch.dispose();
         font.dispose();
     }
 
     @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+    public boolean touchDown(int screenX, int screenY, int pointer, int button)
+    {
         game.setScreen(new SetDiffcultyScreen(game));
         return true;
     }

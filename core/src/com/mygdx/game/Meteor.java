@@ -13,10 +13,10 @@ import static com.badlogic.gdx.math.MathUtils.random;
 
 public class Meteor
 {
+
     Vector2 position;
     Vector2 velocity;
     ExtendViewport viewport;
-
 
     public Meteor(ExtendViewport viewport)
     {
@@ -27,7 +27,6 @@ public class Meteor
     public void update(float delta)
     {
         velocity.y += Constants.METEOR_ACCELERATION * delta;
-
         position.y += velocity.y * delta;
     }
 
@@ -50,9 +49,8 @@ public class Meteor
         boolean returnValue = false;
 
         if(this.position.y < -Constants.METEOR_RADIUS)
-        {
             returnValue = true;
-        }
+
         return returnValue;
     }
 

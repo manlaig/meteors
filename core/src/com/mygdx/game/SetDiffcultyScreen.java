@@ -17,7 +17,8 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
  * Created by manlai on 10/13/2017.
  */
 
-public class SetDiffcultyScreen extends InputAdapter implements Screen {
+public class SetDiffcultyScreen extends InputAdapter implements Screen
+{
 
     ScreenViewport viewport;
     ShapeRenderer renderer;
@@ -31,7 +32,8 @@ public class SetDiffcultyScreen extends InputAdapter implements Screen {
     }
 
     @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+    public boolean touchDown(int screenX, int screenY, int pointer, int button)
+    {
         Vector2 worldClick = viewport.unproject(new Vector2(screenX, screenY));
 
         if(worldClick.dst(Constants.EASY_CENTER) < Constants.DIFFICULTY_BUBBLE_RADIUS)
@@ -46,7 +48,8 @@ public class SetDiffcultyScreen extends InputAdapter implements Screen {
     }
 
     @Override
-    public void show() {
+    public void show()
+    {
         viewport = new ScreenViewport();
         renderer = new ShapeRenderer();
         batch = new SpriteBatch();
@@ -57,8 +60,8 @@ public class SetDiffcultyScreen extends InputAdapter implements Screen {
     }
 
     @Override
-    public void render(float delta) {
-
+    public void render(float delta)
+    {
         Gdx.gl.glClearColor(1,0,0,0);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -91,35 +94,39 @@ public class SetDiffcultyScreen extends InputAdapter implements Screen {
         font.draw(batch, "Hard", Constants.HARD_CENTER.x, Constants.HARD_CENTER.y + hardLayout.height / 2, 0, Align.center, false);
 
         batch.end();
-
     }
 
     @Override
-    public void resize(int width, int height) {
+    public void resize(int width, int height)
+    {
         viewport.update(width, height, true);
     }
 
     @Override
-    public void dispose() {
+    public void dispose()
+    {
         batch.dispose();
         font.dispose();
         renderer.dispose();
     }
 
     @Override
-    public void hide() {
+    public void hide()
+    {
         batch.dispose();
         font.dispose();
         renderer.dispose();
     }
 
     @Override
-    public void resume() {
+    public void resume()
+    {
 
     }
 
     @Override
-    public void pause() {
+    public void pause()
+    {
 
     }
 }

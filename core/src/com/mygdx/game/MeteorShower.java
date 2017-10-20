@@ -10,7 +10,8 @@ import java.util.Random;
  * Created by manlai on 10/14/2017.
  */
 
-public class MeteorShower {
+public class MeteorShower
+{
 
     Array<Meteor> meteors;
     ExtendViewport viewport;
@@ -38,9 +39,8 @@ public class MeteorShower {
         Random random = new Random();
 
         if(random.nextFloat() < delta * difficulty)
-        {
             meteors.add(new Meteor(this.viewport));
-        }
+
 
         for(int i = 0; i < meteors.size; i++)
         {
@@ -68,7 +68,7 @@ public class MeteorShower {
 
 }
 
-class Runner extends Thread
+class Runner extends Thread         //I am saving this class for future features
 {
     @Override
     public void run() {

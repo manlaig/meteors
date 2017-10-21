@@ -11,13 +11,11 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
  * Created by manlai on 10/12/2017.
  */
 
-//TODO: Allow Android players to move using their accelerometer
 
 public class Player
 {
 
     Vector2 position;
-    Vector2 velocity;
     ExtendViewport viewport;
     int deaths = 0;
 
@@ -30,7 +28,6 @@ public class Player
     public void init()
     {
         position = new Vector2(this.viewport.getWorldWidth() / 2, 2.0F);
-        velocity = new Vector2();
     }
 
     public void render(ShapeRenderer renderer)
@@ -59,10 +56,10 @@ public class Player
             position.x += delta * Constants.PLAYER_VELOCITY;
 
 
-        float xAxis = Gdx.input.getAccelerometerX();
-        float yAxis = Gdx.input.getAccelerometerY();
+        float yAxis = -Gdx.input.getAccelerometerY() / 9.8f * Constants.ACCELEROMETER_SENSITIVITY;
+        position.x += -delta * yAxis * Constants.PLAYER_VELOCITY;
 
-        // TODO: FINISH THE ACCELEROMETER CONTROL
+
 
         inBounds(viewport);
     }

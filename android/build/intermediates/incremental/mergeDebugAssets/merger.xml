@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\code\dodge_the_meteors\android\assets"><file name="badlogic.jpg" path="D:\code\dodge_the_meteors\android\assets\badlogic.jpg"/></source><source path="D:\code\dodge_the_meteors\android\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="D:\code\dodge_the_meteors\android\src\debug\assets"/></dataSet></merger>

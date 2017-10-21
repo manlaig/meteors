@@ -12,6 +12,7 @@ public class Constants
     public static final float METEOR_ACCELERATION = -9.8f;
     public static final float PLAYER_VELOCITY = 10.0F;
     public static final float METEOR_RADIUS = 0.15f;
+    public static final float ACCELEROMETER_SENSITIVITY = 1.5f;
 
     public static final float DIFFICULTY_EASY = 5.0f;
     public static final float DIFFUCULTY_MEDIUM = 10.0f;

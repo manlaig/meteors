@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
@@ -83,9 +84,19 @@ public class MeteorScreen extends InputAdapter implements Screen
         batch.begin();
         batch.setProjectionMatrix(hudViewport.getCamera().combined);
 
-        font.draw(batch, "Score: " + meteorShower.score, hudViewport.getWorldWidth() - 100, hudViewport.getWorldHeight() - 20);
-        font.draw(batch, "Top Score: " + meteorShower.topScore, hudViewport.getWorldWidth() - 100, hudViewport.getWorldHeight() - 40);
-        font.draw(batch, "Deaths: " + player.deaths, 20, hudViewport.getWorldHeight() - 20);
+        if(Gdx.app.getType() == Application.ApplicationType.Android)
+        {
+            font.draw(batch, "Score: " + meteorShower.score, hudViewport.getWorldWidth() - 200, hudViewport.getWorldHeight() - 30);
+            font.draw(batch, "Top Score: " + meteorShower.topScore, hudViewport.getWorldWidth() - 200, hudViewport.getWorldHeight() - 60);
+            font.draw(batch, "Deaths: " + player.deaths, 20, hudViewport.getWorldHeight() - 30);
+        }
+
+        else
+        {
+            font.draw(batch, "Score: " + meteorShower.score, hudViewport.getWorldWidth() - 100, hudViewport.getWorldHeight() - 20);
+            font.draw(batch, "Top Score: " + meteorShower.topScore, hudViewport.getWorldWidth() - 100, hudViewport.getWorldHeight() - 40);
+            font.draw(batch, "Deaths: " + player.deaths, 20, hudViewport.getWorldHeight() - 20);
+        }
 
         batch.end();
     }
@@ -110,7 +121,12 @@ public class MeteorScreen extends InputAdapter implements Screen
         hudViewport = new ScreenViewport();
         Gdx.input.setInputProcessor(this);
 
-        font.getData().setScale(1);
+        if(Gdx.app.getType() == Application.ApplicationType.Android)
+            font.getData().setScale(2);
+
+        else
+            font.getData().setScale(1);
+
         font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
 

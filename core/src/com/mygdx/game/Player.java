@@ -59,6 +59,11 @@ public class Player
             position.x += delta * Constants.PLAYER_VELOCITY;
 
 
+        float xAxis = Gdx.input.getAccelerometerX();
+        float yAxis = Gdx.input.getAccelerometerY();
+
+        // TODO: FINISH THE ACCELEROMETER CONTROL
+
         inBounds(viewport);
     }
 

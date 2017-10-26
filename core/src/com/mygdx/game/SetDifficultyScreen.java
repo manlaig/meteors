@@ -36,6 +36,10 @@ public class SetDifficultyScreen extends InputAdapter implements Screen
     {
         Vector2 worldClick = viewport.unproject(new Vector2(screenX, screenY));
 
+
+        // here, we are getting the point where the user pressed and
+        // checking if that click was between EASY, or MEDIUM, or HARD circles
+
         if(worldClick.dst(Constants.EASY_CENTER) < Constants.DIFFICULTY_BUBBLE_RADIUS)
             game.setScreen(new MeteorScreen(game, Constants.DIFFICULTY_EASY));
 
@@ -54,6 +58,7 @@ public class SetDifficultyScreen extends InputAdapter implements Screen
         renderer = new ShapeRenderer();
         batch = new SpriteBatch();
         font = new BitmapFont();
+
         Gdx.input.setInputProcessor(this);
         font.getData().setScale(2);
         font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);

@@ -47,6 +47,9 @@ public class MeteorShower
             Meteor meteor = meteors.get(i);
             meteor.update(delta);
 
+
+            // deleting the meteors that are already below the screen
+
             if(meteor.isBelowScreen())
             {
                 meteors.removeIndex(i);

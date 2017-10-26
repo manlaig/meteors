@@ -37,17 +37,10 @@ public class MeteorScreen extends InputAdapter implements Screen
     }
 
     @Override
-    public void hide()
-    {
-        renderer.dispose();
-        batch.dispose();
-        font.dispose();
-    }
-
-    @Override
     public void render(float delta)
     {
         viewport.apply();
+        hudViewport.apply();
 
         Gdx.gl.glClearColor(203/255.0F, 141/255.0F, 9/255.0F, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -61,13 +54,12 @@ public class MeteorScreen extends InputAdapter implements Screen
         if(player.hitByMeteor(meteorShower))           //each time rendering the screen,
             meteorShower.reset();                      //we check whether the player is hit by a meteor
 
+        // if returned true, we reset the game
 
         meteorShower.render(renderer);
         player.render(renderer);
 
         renderer.end();
-
-        hudViewport.apply();
 
         batch.begin();
         batch.setProjectionMatrix(hudViewport.getCamera().combined);
@@ -109,7 +101,7 @@ public class MeteorScreen extends InputAdapter implements Screen
         hudViewport = new ScreenViewport();
         Gdx.input.setInputProcessor(this);
 
-        if(Gdx.app.getType() == Application.ApplicationType.Android)
+        if(Gdx.app.getType() == Application.ApplicationType.Android)    // if running on Android, the text should be bigger
             font.getData().setScale(2);
 
         else
@@ -131,6 +123,14 @@ public class MeteorScreen extends InputAdapter implements Screen
     {
         game.setScreen(new SetDifficultyScreen(game));
         return true;
+    }
+
+    @Override
+    public void hide()
+    {
+        renderer.dispose();
+        batch.dispose();
+        font.dispose();
     }
 
     @Override

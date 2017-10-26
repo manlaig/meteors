@@ -44,6 +44,7 @@ public class Meteor
         renderer.circle(position.x, position.y, Constants.METEOR_RADIUS, 16);
     }
 
+    // this function returns true if a meteor is below the screen, then we delete that meteor to save memory
     public boolean isBelowScreen()
     {
         boolean returnValue = false;

@@ -15,9 +15,9 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 public class Player
 {
 
-    Vector2 position;
-    ExtendViewport viewport;
-    int deaths = 0;
+    private Vector2 position;
+    private ExtendViewport viewport;
+    private int deaths = 0;
 
     public Player(ExtendViewport viewport)
     {
@@ -70,18 +70,18 @@ public class Player
 
         for(Meteor meteor : meteorShower.meteors)
         {
-            if(meteor.position.y + Constants.METEOR_RADIUS <= this.position.y + 0.5f &&
-                    (meteor.position.x >= this.position.x - 0.5f && meteor.position.x <= this.position.x + 0.5f))
+            if(meteor.getPosition().y + Constants.METEOR_RADIUS <= this.position.y + 0.5f &&
+                    (meteor.getPosition().x >= this.position.x - 0.5f && meteor.getPosition().x <= this.position.x + 0.5f))
             {
                 isHit = true;
                 deaths++;
-                meteorShower.score = 0;
+                meteorShower.setScore(0);
             }
         }
         return isHit;
     }
 
-    public void inBounds(ExtendViewport viewport)
+    private void inBounds(ExtendViewport viewport)
     {
         if(position.x - 0.5F < 0)
             position.x = 0.5F;
@@ -90,5 +90,10 @@ public class Player
         if(position.x + 0.5F > viewport.getWorldWidth())
             position.x = viewport.getWorldWidth() - 0.5F;
 
+    }
+
+    public int getDeaths()
+    {
+        return this.deaths;
     }
 }

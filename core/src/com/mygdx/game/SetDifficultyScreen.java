@@ -17,16 +17,16 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
  * Created by manlai on 10/13/2017.
  */
 
-public class SetDiffcultyScreen extends InputAdapter implements Screen
+public class SetDifficultyScreen extends InputAdapter implements Screen
 {
 
-    ScreenViewport viewport;
-    ShapeRenderer renderer;
-    SpriteBatch batch;
-    BitmapFont font;
-    MyGdxGame game;
+    private ScreenViewport viewport;
+    private ShapeRenderer renderer;
+    private SpriteBatch batch;
+    private BitmapFont font;
+    private MyGdxGame game;
 
-    public SetDiffcultyScreen(MyGdxGame game)
+    public SetDifficultyScreen(MyGdxGame game)
     {
         this.game = game;
     }

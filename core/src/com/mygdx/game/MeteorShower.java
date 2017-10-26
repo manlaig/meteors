@@ -14,10 +14,10 @@ public class MeteorShower
 {
 
     Array<Meteor> meteors;
-    ExtendViewport viewport;
-    int score = 0;
-    int topScore = 0;
-    float difficulty;
+    private ExtendViewport viewport;
+    private int score = 0;
+    private int topScore = 0;
+    private float difficulty;
 
     public MeteorShower(ExtendViewport viewport, float difficulty)
     {
@@ -58,6 +58,7 @@ public class MeteorShower
 
     }
 
+    // if player is hit, we call this method to reset the meteors
     public void reset()
     {
         for(int i = 0; i < meteors.size; i++)
@@ -66,7 +67,23 @@ public class MeteorShower
         }
     }
 
+    public void setScore(int newScore)
+    {
+        this.score = newScore;
+    }
+
+    public int getScore()
+    {
+        return this.score;
+    }
+
+    public int getTopScore()
+    {
+        return this.topScore;
+    }
+
 }
+
 
 class Runner extends Thread         //I am saving this class for future features
 {

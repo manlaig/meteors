@@ -14,9 +14,9 @@ import static com.badlogic.gdx.math.MathUtils.random;
 public class Meteor
 {
 
-    Vector2 position;
-    Vector2 velocity;
-    ExtendViewport viewport;
+    private Vector2 position;
+    private Vector2 velocity;
+    private ExtendViewport viewport;
 
     public Meteor(ExtendViewport viewport)
     {
@@ -30,7 +30,7 @@ public class Meteor
         position.y += velocity.y * delta;
     }
 
-    public void init()
+    private void init()
     {
         position = new Vector2(random.nextFloat() * (viewport.getWorldWidth() - 2 * 0.2f) + 0.2f,
                                 viewport.getWorldHeight() + 0.3F);
@@ -52,6 +52,11 @@ public class Meteor
             returnValue = true;
 
         return returnValue;
+    }
+
+    public Vector2 getPosition()
+    {
+        return position;
     }
 
 }

@@ -20,15 +20,15 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 public class MeteorScreen extends InputAdapter implements Screen
 {
 
-    ExtendViewport viewport;
-    ScreenViewport hudViewport;
-    ShapeRenderer renderer;
-    MeteorShower meteorShower;
-    Player player;
-    SpriteBatch batch;
-    BitmapFont font;
-    MyGdxGame game;
-    float difficulty;
+    private ExtendViewport viewport;
+    private ScreenViewport hudViewport;
+    private ShapeRenderer renderer;
+    private MeteorShower meteorShower;
+    private Player player;
+    private SpriteBatch batch;
+    private BitmapFont font;
+    private MyGdxGame game;
+    private float difficulty;
 
     public MeteorScreen(MyGdxGame game, float difficulty)
     {
@@ -42,18 +42,6 @@ public class MeteorScreen extends InputAdapter implements Screen
         renderer.dispose();
         batch.dispose();
         font.dispose();
-    }
-
-    @Override
-    public void pause()
-    {
-
-    }
-
-    @Override
-    public void resume()
-    {
-
     }
 
     @Override
@@ -86,16 +74,16 @@ public class MeteorScreen extends InputAdapter implements Screen
 
         if(Gdx.app.getType() == Application.ApplicationType.Android)
         {
-            font.draw(batch, "Score: " + meteorShower.score, hudViewport.getWorldWidth() - 200, hudViewport.getWorldHeight() - 30);
-            font.draw(batch, "Top Score: " + meteorShower.topScore, hudViewport.getWorldWidth() - 200, hudViewport.getWorldHeight() - 60);
-            font.draw(batch, "Deaths: " + player.deaths, 20, hudViewport.getWorldHeight() - 30);
+            font.draw(batch, "Score: " + meteorShower.getScore(), hudViewport.getWorldWidth() - 200, hudViewport.getWorldHeight() - 30);
+            font.draw(batch, "Top Score: " + meteorShower.getTopScore(), hudViewport.getWorldWidth() - 200, hudViewport.getWorldHeight() - 60);
+            font.draw(batch, "Deaths: " + player.getDeaths(), 20, hudViewport.getWorldHeight() - 30);
         }
 
         else
         {
-            font.draw(batch, "Score: " + meteorShower.score, hudViewport.getWorldWidth() - 100, hudViewport.getWorldHeight() - 20);
-            font.draw(batch, "Top Score: " + meteorShower.topScore, hudViewport.getWorldWidth() - 100, hudViewport.getWorldHeight() - 40);
-            font.draw(batch, "Deaths: " + player.deaths, 20, hudViewport.getWorldHeight() - 20);
+            font.draw(batch, "Score: " + meteorShower.getScore(), hudViewport.getWorldWidth() - 100, hudViewport.getWorldHeight() - 20);
+            font.draw(batch, "Top Score: " + meteorShower.getTopScore(), hudViewport.getWorldWidth() - 100, hudViewport.getWorldHeight() - 40);
+            font.draw(batch, "Deaths: " + player.getDeaths(), 20, hudViewport.getWorldHeight() - 20);
         }
 
         batch.end();
@@ -141,8 +129,20 @@ public class MeteorScreen extends InputAdapter implements Screen
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button)
     {
-        game.setScreen(new SetDiffcultyScreen(game));
+        game.setScreen(new SetDifficultyScreen(game));
         return true;
+    }
+
+    @Override
+    public void pause()
+    {
+
+    }
+
+    @Override
+    public void resume()
+    {
+
     }
 
 }

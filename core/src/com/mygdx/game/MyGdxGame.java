@@ -8,6 +8,6 @@ public class MyGdxGame extends Game
     @Override
     public void create()
     {
-        setScreen(new SetDiffcultyScreen(this));
+        setScreen(new SetDifficultyScreen(this));
     }
 }

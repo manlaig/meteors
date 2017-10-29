@@ -1,7 +1,4 @@
-#Fri Oct 20 23:31:02 PDT 2017
-base.0=D\:\\code\\dodge_the_meteors\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_7a396e4768f5f55f4a7dd2dda45914422fc073b7
-renamed.1=classes2.dex
+#Thu Oct 26 14:27:45 PDT 2017
+base.0=D\:\\code\\dodge_the_meteors\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
-file.1=D\:\\code\\dodge_the_meteors\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_a576eed4bf3e6b166c893b74111654c8cd87f848\\classes.dex
-base.1=D\:\\code\\dodge_the_meteors\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_a576eed4bf3e6b166c893b74111654c8cd87f848
-file.0=D\:\\code\\dodge_the_meteors\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_7a396e4768f5f55f4a7dd2dda45914422fc073b7\\classes.dex
+file.0=D\:\\code\\dodge_the_meteors\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

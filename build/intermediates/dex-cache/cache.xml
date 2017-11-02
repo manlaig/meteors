@@ -25,7 +25,7 @@
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="ab23d2a5db782f0cfe2633611cd94f66482f94bf">
+        sha1="f44203a54fc7d72a5d39afa721b77a2f6e3f2f9c">
         <dex dex="D:\code\dodge_the_meteors\android\build\intermediates\pre-dexed\debug\core-1.0_f1baa495985879020e804cf4dc60ac45b3119539.jar" />
     </item>
     <item

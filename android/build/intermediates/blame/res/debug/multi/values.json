@@ -31,15 +31,7 @@
                     "endOffset": 568
                 },
                 "from": {
-                    "file": "D:\\code\\dodge_the_meteors\\android\\res\\values\\styles.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 17,
-                        "endLine": 9,
-                        "endColumn": 12,
-                        "endOffset": 475
-                    }
+                    "file": "D:\\code\\dodge_the_meteors\\android\\res\\values\\styles.xml"
                 }
             }
         ]

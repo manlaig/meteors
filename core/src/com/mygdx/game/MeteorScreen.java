@@ -48,16 +48,14 @@ public class MeteorScreen extends InputAdapter implements Screen
         renderer.setProjectionMatrix(viewport.getCamera().combined);
 
         meteorShower.update(delta);
-        player.update(delta);
+        player.updatePlayerPosition(delta);
         renderer.begin(ShapeRenderer.ShapeType.Filled);
 
-        if(player.hitByMeteor(meteorShower))           //each time rendering the screen,
-            meteorShower.reset();                      //we check whether the player is hit by a meteor
-
-        // if returned true, we reset the game
+        if(player.hitByMeteor(meteorShower))
+            meteorShower.reset();
 
         meteorShower.render(renderer);
-        player.render(renderer);
+        player.renderPlayer(renderer);
 
         renderer.end();
 

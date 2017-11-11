@@ -24,7 +24,7 @@ public class Meteor
         init();
     }
 
-    public void update(float delta)
+    public void updateMeteorPosition(float delta)
     {
         velocity.y += Constants.METEOR_ACCELERATION * delta;
         position.y += velocity.y * delta;
@@ -37,7 +37,7 @@ public class Meteor
         velocity = new Vector2();
     }
 
-    protected void render(ShapeRenderer renderer)
+    protected void renderMeteors(ShapeRenderer renderer)
     {
         renderer.set(ShapeRenderer.ShapeType.Filled);
         renderer.setColor(Color.RED);

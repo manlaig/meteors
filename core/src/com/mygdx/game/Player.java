@@ -30,7 +30,7 @@ public class Player
         position = new Vector2(this.viewport.getWorldWidth() / 2, 2.0F);
     }
 
-    public void render(ShapeRenderer renderer)      // drawing the player
+    public void renderPlayer(ShapeRenderer renderer)      // drawing the player
     {
         renderer.setColor(Color.BLACK);
         renderer.set(ShapeRenderer.ShapeType.Filled);
@@ -46,7 +46,7 @@ public class Player
         renderer.rectLine(torsoBottom.x, torsoBottom.y, torsoBottom.x - 0.5F, torsoBottom.y - 0.5F, 0.1F);
     }
 
-    public void update(float delta)
+    public void updatePlayerPosition(float delta)
     {
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT))
             position.x -= delta * Constants.PLAYER_VELOCITY;

@@ -30,7 +30,7 @@ public class MeteorShower
     {
         for(Meteor meteor : meteors)
         {
-            meteor.render(renderer);
+            meteor.renderMeteors(renderer);
         }
     }
 
@@ -45,10 +45,7 @@ public class MeteorShower
         for(int i = 0; i < meteors.size; i++)
         {
             Meteor meteor = meteors.get(i);
-            meteor.update(delta);
-
-
-            // deleting the meteors that are already below the screen
+            meteor.updateMeteorPosition(delta);
 
             if(meteor.isBelowScreen())
             {
@@ -61,7 +58,6 @@ public class MeteorShower
 
     }
 
-    // if player is hit, we call this method to reset the meteors
     public void reset()
     {
         for(int i = 0; i < meteors.size; i++)
@@ -85,18 +81,4 @@ public class MeteorShower
         return this.topScore;
     }
 
-}
-
-
-class Runner extends Thread         //I am saving this class for future features
-{
-    @Override
-    public void run() {
-        try {
-            Thread.sleep(300);
-        } catch(InterruptedException e)
-        {
-            e.printStackTrace();
-        }
-    }
 }

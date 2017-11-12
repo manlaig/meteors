@@ -3,14 +3,8 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.TimeUtils;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 /**
@@ -23,18 +17,10 @@ public class Player
     private Vector2 position;
     private ExtendViewport viewport;
     private int deaths = 0;
-    private Array<TextureRegion> playerBody;
-    private Animation playerAnimation;
-    private float startTime;
 
     public Player(ExtendViewport viewport)
     {
         this.viewport = viewport;
-        playerBody = new Array<TextureRegion>();
-        playerBody.add(new TextureRegion(new Texture("ninja_standing_small")));
-        playerBody.add(new TextureRegion(new Texture("ninja_walking_small")));
-        playerAnimation = new Animation(0.1f, playerBody, Animation.PlayMode.LOOP_PINGPONG);
-        startTime = TimeUtils.nanoTime();
         init();
     }
 
@@ -48,7 +34,7 @@ public class Player
         renderer.setColor(Color.BLACK);
         renderer.set(ShapeRenderer.ShapeType.Filled);
 
-        /*renderer.circle(this.position.x, this.position.y, 0.5F, 20);
+        renderer.circle(this.position.x, this.position.y, 0.5F, 20);
         Vector2 torsoTop = new Vector2(this.position.x, this.position.y - 0.5F);
         Vector2 torsoBottom = new Vector2(torsoTop.x, torsoTop.y - 1.0F);
 
@@ -56,11 +42,7 @@ public class Player
         renderer.rectLine(torsoTop.x, torsoTop.y, torsoTop.x + 0.5F, torsoTop.y - 0.5F, 0.1F);
         renderer.rectLine(torsoTop.x, torsoTop.y, torsoTop.x - 0.5F, torsoTop.y - 0.5F, 0.1F);
         renderer.rectLine(torsoBottom.x, torsoBottom.y, torsoBottom.x + 0.5F, torsoBottom.y - 0.5F, 0.1F);
-        renderer.rectLine(torsoBottom.x, torsoBottom.y, torsoBottom.x - 0.5F, torsoBottom.y - 0.5F, 0.1F);*/
-
-        float elapsedTime = MathUtils.nanoToSec * (Time)
-
-
+        renderer.rectLine(torsoBottom.x, torsoBottom.y, torsoBottom.x - 0.5F, torsoBottom.y - 0.5F, 0.1F);
     }
 
     public void updatePlayerPosition(float delta)

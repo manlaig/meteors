@@ -16,11 +16,9 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
  * Created by manlai on 10/12/2017.
  */
 
-
 public class MeteorScreen extends InputAdapter implements Screen
 {
-
-    private ExtendViewport viewport;
+    private ExtendViewport mainViewport;
     private ScreenViewport hudViewport;
     private ShapeRenderer renderer;
     private MeteorShower meteorShower;
@@ -39,17 +37,15 @@ public class MeteorScreen extends InputAdapter implements Screen
     @Override
     public void render(float delta)
     {
-        viewport.apply();
+        mainViewport.apply();
         hudViewport.apply();
-
         Gdx.gl.glClearColor(203/255.0F, 141/255.0F, 9/255.0F, 1);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        renderer.setProjectionMatrix(viewport.getCamera().combined);
+        renderer.setProjectionMatrix(mainViewport.getCamera().combined);
+        renderer.begin(ShapeRenderer.ShapeType.Filled);
 
         meteorShower.update(delta);
         player.updatePlayerPosition(delta);
-        renderer.begin(ShapeRenderer.ShapeType.Filled);
 
         if(player.hitByMeteor(meteorShower))
             meteorShower.reset();
@@ -68,21 +64,19 @@ public class MeteorScreen extends InputAdapter implements Screen
             font.draw(batch, "Top Score: " + meteorShower.getTopScore(), hudViewport.getWorldWidth() - 200, hudViewport.getWorldHeight() - 60);
             font.draw(batch, "Deaths: " + player.getDeaths(), 20, hudViewport.getWorldHeight() - 30);
         }
-
         else
         {
             font.draw(batch, "Score: " + meteorShower.getScore(), hudViewport.getWorldWidth() - 100, hudViewport.getWorldHeight() - 20);
             font.draw(batch, "Top Score: " + meteorShower.getTopScore(), hudViewport.getWorldWidth() - 100, hudViewport.getWorldHeight() - 40);
             font.draw(batch, "Deaths: " + player.getDeaths(), 20, hudViewport.getWorldHeight() - 20);
         }
-
         batch.end();
     }
 
     @Override
     public void resize(int width, int height)
     {
-        viewport.update(width, height, true);
+        mainViewport.update(width, height, true);
         hudViewport.update(width, height, true);
         player.init();
     }
@@ -90,22 +84,26 @@ public class MeteorScreen extends InputAdapter implements Screen
     @Override
     public void show()
     {
-        renderer = new ShapeRenderer();
-        viewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
-        meteorShower = new MeteorShower(viewport, difficulty);
-        player = new Player(viewport);
-        batch = new SpriteBatch();
-        font = new BitmapFont();
-        hudViewport = new ScreenViewport();
-        Gdx.input.setInputProcessor(this);
+        initializeAllVariables();
 
-        if(Gdx.app.getType() == Application.ApplicationType.Android)    // if running on Android, the text should be bigger
+        if(Gdx.app.getType() == Application.ApplicationType.Android)    //the text should be bigger on Android
             font.getData().setScale(2);
-
         else
             font.getData().setScale(1);
 
         font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+    }
+
+    private void initializeAllVariables()
+    {
+        renderer = new ShapeRenderer();
+        mainViewport = new ExtendViewport(Constants.WORLD_SIZE, Constants.WORLD_SIZE);
+        meteorShower = new MeteorShower(mainViewport, difficulty);
+        player = new Player(mainViewport);
+        batch = new SpriteBatch();
+        font = new BitmapFont();
+        hudViewport = new ScreenViewport();
+        Gdx.input.setInputProcessor(this);
     }
 
     @Override
@@ -132,15 +130,11 @@ public class MeteorScreen extends InputAdapter implements Screen
     }
 
     @Override
-    public void pause()
-    {
+    public void pause() {
 
     }
-
     @Override
-    public void resume()
-    {
+    public void resume() {
 
     }
-
 }

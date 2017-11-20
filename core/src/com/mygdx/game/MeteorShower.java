@@ -12,11 +12,9 @@ import java.util.Random;
 
 public class MeteorShower
 {
-
-    Array<Meteor> meteors;
+    private Array<Meteor> meteors;
     private ExtendViewport viewport;
-    private int score = 0;
-    private int topScore = 0;
+    private int score = 0, topScore = 0;
     private float difficulty;
 
     public MeteorShower(ExtendViewport viewport, float difficulty)
@@ -29,9 +27,7 @@ public class MeteorShower
     public void render(ShapeRenderer renderer)
     {
         for(Meteor meteor : meteors)
-        {
             meteor.renderMeteors(renderer);
-        }
     }
 
     public void update(float delta)
@@ -40,7 +36,6 @@ public class MeteorShower
 
         if(random.nextFloat() < delta * difficulty)
             meteors.add(new Meteor(this.viewport));
-
 
         for(int i = 0; i < meteors.size; i++)
         {
@@ -55,15 +50,12 @@ public class MeteorShower
                     topScore = score;
             }
         }
-
     }
 
     public void reset()
     {
         for(int i = 0; i < meteors.size; i++)
-        {
             meteors.removeRange(0, meteors.size - 1);
-        }
     }
 
     public void setScore(int newScore)

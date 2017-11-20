@@ -19,7 +19,6 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class SetDifficultyScreen extends InputAdapter implements Screen
 {
-
     private ScreenViewport viewport;
     private ShapeRenderer renderer;
     private SpriteBatch batch;
@@ -36,8 +35,7 @@ public class SetDifficultyScreen extends InputAdapter implements Screen
     {
         Vector2 worldClick = viewport.unproject(new Vector2(screenX, screenY));
 
-        // checking if user clicked between EASY, MEDIUM, or HARD circles
-
+        // checking where user clicked
         if(worldClick.dst(Constants.EASY_CENTER) < Constants.DIFFICULTY_BUBBLE_RADIUS)
             game.setScreen(new MeteorScreen(game, Constants.DIFFICULTY_EASY));
 
@@ -56,7 +54,6 @@ public class SetDifficultyScreen extends InputAdapter implements Screen
         renderer = new ShapeRenderer();
         batch = new SpriteBatch();
         font = new BitmapFont();
-
         Gdx.input.setInputProcessor(this);
         font.getData().setScale(2);
         font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
@@ -67,13 +64,20 @@ public class SetDifficultyScreen extends InputAdapter implements Screen
     {
         Gdx.gl.glClearColor(1,0,0,0);
         Gdx.gl20.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         viewport.apply();
-
         batch.setProjectionMatrix(viewport.getCamera().combined);
 
         renderer.begin(ShapeRenderer.ShapeType.Filled);
+        drawDifficultyCircles();
+        renderer.end();
 
+        batch.begin();
+        displayDifficultyWords();
+        batch.end();
+    }
+
+    private void drawDifficultyCircles()
+    {
         renderer.setColor(200/255.0f, 0,0,0);
         renderer.circle(Constants.EASY_CENTER.x, Constants.EASY_CENTER.y, Constants.DIFFICULTY_BUBBLE_RADIUS);
 
@@ -82,21 +86,18 @@ public class SetDifficultyScreen extends InputAdapter implements Screen
 
         renderer.setColor(130/255.0f,0,0,0);
         renderer.circle(Constants.HARD_CENTER.x, Constants.HARD_CENTER.y, Constants.DIFFICULTY_BUBBLE_RADIUS);
+    }
 
-        renderer.end();
-
-        batch.begin();
-
-        final GlyphLayout easyLayout = new GlyphLayout(font, "Easy");
+    private void displayDifficultyWords()
+    {
+        GlyphLayout easyLayout = new GlyphLayout(font, "Easy");
         font.draw(batch, "Easy", Constants.EASY_CENTER.x, Constants.EASY_CENTER.y + easyLayout.height / 2, 0, Align.center, false);
 
-        final GlyphLayout mediumLayout = new GlyphLayout(font, "Medium");
+        GlyphLayout mediumLayout = new GlyphLayout(font, "Medium");
         font.draw(batch, "Medium", Constants.MEDIUM_CENTER.x, Constants.MEDIUM_CENTER.y + mediumLayout.height / 2, 0, Align.center, false);
 
-        final GlyphLayout hardLayout = new GlyphLayout(font, "Hard");
+        GlyphLayout hardLayout = new GlyphLayout(font, "Hard");
         font.draw(batch, "Hard", Constants.HARD_CENTER.x, Constants.HARD_CENTER.y + hardLayout.height / 2, 0, Align.center, false);
-
-        batch.end();
     }
 
     @Override
@@ -122,14 +123,10 @@ public class SetDifficultyScreen extends InputAdapter implements Screen
     }
 
     @Override
-    public void resume()
-    {
-
+    public void resume() {
     }
 
     @Override
-    public void pause()
-    {
-
+    public void pause() {
     }
 }

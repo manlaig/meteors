@@ -13,9 +13,7 @@ import static com.badlogic.gdx.math.MathUtils.random;
 
 public class Meteor
 {
-
-    private Vector2 position;
-    private Vector2 velocity;
+    private Vector2 position, velocity;
     private ExtendViewport viewport;
 
     public Meteor(ExtendViewport viewport)
@@ -44,20 +42,13 @@ public class Meteor
         renderer.circle(position.x, position.y, Constants.METEOR_RADIUS, 16);
     }
 
-    // this function returns true if a meteor is below the screen, then we delete that meteor to save memory
     public boolean isBelowScreen()
     {
-        boolean returnValue = false;
-
-        if(this.position.y < -Constants.METEOR_RADIUS)
-            returnValue = true;
-
-        return returnValue;
+        return this.position.y < -Constants.METEOR_RADIUS ? true : false;
     }
 
     public Vector2 getPosition()
     {
         return position;
     }
-
 }

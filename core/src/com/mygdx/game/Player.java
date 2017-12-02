@@ -29,7 +29,7 @@ public class Player
         position = new Vector2(this.viewport.getWorldWidth() / 2, 2.0F);
     }
 
-    public void renderPlayer(ShapeRenderer renderer)      // drawing the player
+    public void renderPlayer(ShapeRenderer renderer)
     {
         renderer.setColor(Color.BLACK);
         renderer.set(ShapeRenderer.ShapeType.Filled);

@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class MeteorShower
 {
-    private Array<Meteor> meteors;
+    Array<Meteor> meteors;
     private ExtendViewport viewport;
     private int score = 0, topScore = 0;
     private float difficulty;

@@ -123,10 +123,12 @@ public class SetDifficultyScreen extends InputAdapter implements Screen
     }
 
     @Override
-    public void resume() {
+    public void resume()
+    {
     }
 
     @Override
-    public void pause() {
+    public void pause()
+    {
     }
 }

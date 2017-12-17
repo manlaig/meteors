@@ -11,7 +11,6 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
  * Created by manlai on 10/12/2017.
  */
 
-
 public class Player
 {
     private Vector2 position;
@@ -55,12 +54,10 @@ public class Player
             position.x += delta * Constants.PLAYER_VELOCITY;
 
 
-        /* the 2 lines below are for Android players, these lines allow
-         * Android users to play the game by tilting their phones   */
+        // the 2 lines below allows Android users to play the game by tilting their phones
 
         float yAxis = -Gdx.input.getAccelerometerY() / 9.8f * Constants.ACCELEROMETER_SENSITIVITY;
         position.x += -delta * yAxis * Constants.PLAYER_VELOCITY;
-
 
         inBounds(viewport);
     }

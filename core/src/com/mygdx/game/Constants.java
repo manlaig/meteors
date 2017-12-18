@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Constants
 {
-    public static final float WORLD_SIZE = 50.0F;
+    public static final float WORLD_SIZE = 10.0F;
     public static final float METEOR_ACCELERATION = -9.8f;
     public static final float PLAYER_VELOCITY = 10.0F;
     public static final float METEOR_RADIUS = 0.15f;

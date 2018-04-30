@@ -1,6 +1,10 @@
 [
     {
-        "merged": "D:\\code\\dodge_the_meteors\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi\\ic_launcher.png",
-        "source": "D:\\code\\dodge_the_meteors\\android\\res\\drawable-xhdpi\\ic_launcher.png"
+        "merged": "/Users/ahmadJabr/Desktop/JavaProjectTest/myGame/android/build/intermediates/res/merged/debug/drawable-xhdpi/ic_launcher.png",
+        "source": "/Users/ahmadJabr/Desktop/JavaProjectTest/myGame/android/res/drawable-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/ahmadJabr/Desktop/JavaProjectAJ/myGame/android/build/intermediates/res/merged/debug/drawable-xhdpi/ic_launcher.png",
+        "source": "/Users/ahmadJabr/Desktop/JavaProjectAJ/myGame/android/res/drawable-xhdpi/ic_launcher.png"
     }
 ]

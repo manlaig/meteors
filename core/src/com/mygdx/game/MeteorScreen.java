@@ -4,6 +4,7 @@ import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -11,10 +12,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
-
-/**
- * Created by manlai on 10/12/2017.
- */
 
 public class MeteorScreen extends InputAdapter implements Screen
 {
@@ -27,11 +24,16 @@ public class MeteorScreen extends InputAdapter implements Screen
     private BitmapFont font;
     private MyGdxGame game;
     private float difficulty;
+    private Music music;
 
     public MeteorScreen(MyGdxGame game, float difficulty)
     {
         this.game = game;
         this.difficulty = difficulty;
+        music = Gdx.audio.newMusic(Gdx.files.internal("sound/maingame.mp3"));
+        music.play();
+        music.setVolume(0.8f);
+        music.setLooping(true);
     }
 
     @Override
@@ -112,6 +114,7 @@ public class MeteorScreen extends InputAdapter implements Screen
         renderer.dispose();
         batch.dispose();
         font.dispose();
+        music.dispose();
     }
 
     @Override
@@ -127,6 +130,7 @@ public class MeteorScreen extends InputAdapter implements Screen
         renderer.dispose();
         batch.dispose();
         font.dispose();
+        music.dispose();
     }
 
     @Override

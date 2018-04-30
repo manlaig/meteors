@@ -2,10 +2,6 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.math.Vector2;
 
-/**
- * Created by manlai on 10/12/2017.
- */
-
 public class Constants
 {
     public static final float WORLD_SIZE = 10.0F;

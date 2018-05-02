@@ -2,20 +2,18 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
-
-/**
- * Created by manlai on 10/12/2017.
- */
 
 public class Player
 {
     private Vector2 position;
     private ExtendViewport viewport;
     private int deaths = 0;
+    private Sound hit;
 
     public Player(ExtendViewport viewport)
     {
@@ -72,10 +70,13 @@ public class Player
                     (meteor.getPosition().x >= this.position.x - 0.5f && meteor.getPosition().x <= this.position.x + 0.5f))
             {
                 isHit = true;
+                hit = Gdx.audio.newSound(Gdx.files.internal("sound/hit.mp3"));
+                hit.play(1f);
                 deaths++;
                 meteorShower.setScore(0);
             }
         }
+        //hit.dispose();
         return isHit;
     }
 

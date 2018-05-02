@@ -6,10 +6,6 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 
 import java.util.Random;
 
-/**
- * Created by manlai on 10/14/2017.
- */
-
 public class MeteorShower
 {
     Array<Meteor> meteors;

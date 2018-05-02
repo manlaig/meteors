@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -13,9 +14,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-/**
- * Created by manlai on 10/13/2017.
- */
+import static com.badlogic.gdx.Input.Keys.R;
 
 public class SetDifficultyScreen extends InputAdapter implements Screen
 {
@@ -24,10 +23,14 @@ public class SetDifficultyScreen extends InputAdapter implements Screen
     private SpriteBatch batch;
     private BitmapFont font;
     private MyGdxGame game;
+    private Sound sound;
 
     public SetDifficultyScreen(MyGdxGame game)
     {
         this.game = game;
+        sound = Gdx.audio.newSound(Gdx.files.internal("sound/difficultyselect.mp3"));
+        long id = sound.play(1f);
+        sound.setLooping(id, true);
     }
 
     @Override
@@ -112,6 +115,7 @@ public class SetDifficultyScreen extends InputAdapter implements Screen
         batch.dispose();
         font.dispose();
         renderer.dispose();
+        sound.dispose();
     }
 
     @Override
@@ -120,6 +124,7 @@ public class SetDifficultyScreen extends InputAdapter implements Screen
         batch.dispose();
         font.dispose();
         renderer.dispose();
+        sound.dispose();
     }
 
     @Override
